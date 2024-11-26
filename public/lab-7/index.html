@@ -76,6 +76,27 @@
       font-size: 0.9rem;
       color: #777;
     }
+
+    .addendum {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff4d9;
+      border-radius: 8px;
+      border: 1px solid #e0c079;
+      font-size: 0.9rem;
+    }
+
+    .addendum h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .addendum p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -103,6 +124,15 @@
       <p>Last updated: <span id="lastUpdated"></span></p>
     </footer>
   </div>
+
+  <div class="addendum">
+    <h2>Addendum</h2>
+    <p><strong>Purpose:</strong> This webpage allows users to create a fun Mad Lib story by entering words into predefined categories. The user inputs are collected through an HTML form and can be processed to dynamically generate a humorous or creative story.</p>
+    <p><strong>JavaScript Feature:</strong> The script at the bottom of the page dynamically updates the "Last updated" timestamp in the footer to display the last modification date of the file. This demonstrates basic DOM manipulation and enhances the webpage's dynamic interactivity.</p>
+    <p><strong>Challenges:</strong> Ensuring the form is user-friendly and accessible while maintaining aesthetic consistency. Testing the JavaScript code to verify compatibility across browsers was also crucial.</p>
+    <p><strong>Future Improvements:</strong> Implementing JavaScript to display the generated story dynamically on the same page after form submission would eliminate the need for server-side processing and enhance user experience.</p>
+  </div>
+
   <script>
     document.getElementById('lastUpdated').textContent = document.lastModified;
   </script>
