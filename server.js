@@ -8,16 +8,15 @@ const server = express(); // Create an Express app instance
 server.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 server.use(logger('dev')); // Use Morgan for logging
 
-// Serve static files from the 'public' directory
+// Serve static files from the 'public' directory under the /ITC path
 const publicServedFilesPath = path.join(__dirname, 'public');
-server.use(express.static(publicServedFilesPath));
+server.use('/ITC', express.static(publicServedFilesPath)); // Serve static files under /ITC
 
-// POST Route for Mad Lib
-server.post('/submit', (req, res) => {
-  console.log(req.body);
+// POST Route for Mad Lib under /ITC/lab-7/index.html
+server.post('/ITC/lab-7/index.html', (req, res) => {
   const { singularNoun, pluralNoun, descriptiveAdjective, actionVerb, place } = req.body;
 
-  // If any field is missing, show an error page
+  // Check if all fields are filled out
   if (!singularNoun || !pluralNoun || !descriptiveAdjective || !actionVerb || !place) {
     res.send(`
       <!DOCTYPE html>
@@ -53,7 +52,7 @@ server.post('/submit', (req, res) => {
       <body>
         <h1>Submission Failed</h1>
         <p>Please fill out ALL fields</p>
-        <a href="/lab-7/index.html">Go Back to Form</a>
+        <a href="/ITC/lab-7/index.html">Go Back to Form</a>
       </body>
       </html>
     `);
@@ -62,9 +61,8 @@ server.post('/submit', (req, res) => {
 
   // Generate Mad Lib story
   const madLib = `In a distant ${place}, a ${descriptiveAdjective} ${singularNoun} set off on a daring quest to ${actionVerb}. 
-  As it ventured through the wild terrain, a band of mischievous ${pluralNoun} appeared, eager to join the journey!`;
+As it ventured through the wild terrain, a band of mischievous ${pluralNoun} appeared, eager to join the journey!`;
 
-  // Send the generated Mad Lib to the client
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -132,7 +130,7 @@ server.post('/submit', (req, res) => {
           border-radius: 10px;
           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
-
+        
         /* Responsive Design */
         @media (max-width: 768px) {
           body {
@@ -157,7 +155,7 @@ server.post('/submit', (req, res) => {
     <body>
       <h1>Your Mad Lib!</h1>
       <p>${madLib}</p>
-      <a href="/lab-7/index.html">Create Another Mad Lib</a>
+      <a href="/ITC/lab-7/index.html">Create Another Mad Lib</a>
     </body>
     </html>
   `);
@@ -168,4 +166,4 @@ let port = 80; // Default port
 if (process.argv[2] === 'local') {
   port = 8080; // Use port 8080 for local development
 }
-server.listen(port, () => console.log(`Server ready on localhost:${port}`));
+server.listen(port, () => console.log(`Ready on localhost:${port}`));
