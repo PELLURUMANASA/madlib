@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun Mad Libs: Create Your Own Story!</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .input-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    .submit-button {
+      padding: 12px;
+      font-size: 1rem;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Mad Lib Generator</h1>
+    <form class="input-form" method="POST" action="/ITC505/lab-7/index.html">
+      <label for="singularNoun">Singular Noun:</label>
+      <input type="text" id="singularNoun" name="singularNoun" placeholder="Enter a singular noun" required>
+      
+      <label for="pluralNoun">Plural Noun:</label>
+      <input type="text" id="pluralNoun" name="pluralNoun" placeholder="Enter a plural noun" required>
+      
+      <label for="descriptiveAdjective">Adjective:</label>
+      <input type="text" id="descriptiveAdjective" name="descriptiveAdjective" placeholder="Enter an adjective" required>
+      
+      <label for="actionVerb">Verb (Past Tense):</label>
+      <input type="text" id="actionVerb" name="actionVerb" placeholder="Enter a verb (past tense)" required>
+      
+      <label for="place">Location:</label>
+      <input type="text" id="place" name="place" placeholder="Enter a location" required>
+      
+      <button class="submit-button" type="submit">Generate Mad Lib</button>
+    </form>
+    <footer>
+      <p>Last updated: <span id="lastUpdated"></span></p>
+    </footer>
+  </div>
+  <script>
+    document.getElementById('lastUpdated').textContent = document.lastModified;
+  </script>
+</body>
+</html>
