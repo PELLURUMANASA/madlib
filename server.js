@@ -10,10 +10,10 @@ server.use(logger('dev')); // Use Morgan for logging
 
 // Serve static files from the 'public' directory under the /ITC path
 const publicServedFilesPath = path.join(__dirname, 'public');
-server.use('/ITC', express.static(publicServedFilesPath)); // Serve static files under /ITC
+server.use('/ITC505', express.static(publicServedFilesPath)); // Serve static files under /ITC
 
 // POST Route for Mad Lib under /ITC/lab-7/index.html
-server.post('/ITC/lab-7/index.html', (req, res) => {
+server.post('/ITC505/lab-7/index.html', (req, res) => {
   const { singularNoun, pluralNoun, descriptiveAdjective, actionVerb, place } = req.body;
 
   // Check if all fields are filled out
@@ -155,7 +155,7 @@ As it ventured through the wild terrain, a band of mischievous ${pluralNoun} app
     <body>
       <h1>Your Mad Lib!</h1>
       <p>${madLib}</p>
-      <a href="/ITC/lab-7/index.html">Create Another Mad Lib</a>
+      <a href="/ITC505/lab-7/index.html">Create Another Mad Lib</a>
     </body>
     </html>
   `);
